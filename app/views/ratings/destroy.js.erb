@@ -1,0 +1,5 @@
+var movie = $('#movie-<%= @movie.id %>');
+movie.replaceWith("<%= j render('lists/movie', movie: @movie) %>");
+
+addCheckboxHandler();
+addPositionToMovies();
