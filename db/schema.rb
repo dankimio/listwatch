@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170813180854) do
   create_table "movies", force: :cascade do |t|
     t.string "title", null: false
     t.integer "tmdb_id"
-    t.integer "imdb_id"
+    t.string "imdb_id"
     t.text "description"
     t.string "tmdb_poster_path"
     t.string "director"

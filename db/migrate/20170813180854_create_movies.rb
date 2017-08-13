@@ -3,7 +3,7 @@ class CreateMovies < ActiveRecord::Migration[5.1]
     create_table :movies do |t|
       t.string :title, null: false
       t.integer :tmdb_id
-      t.integer :imdb_id
+      t.string :imdb_id
       t.text :description
       t.string :tmdb_poster_path
       t.string :director
