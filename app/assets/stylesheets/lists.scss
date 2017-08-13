@@ -1,0 +1,55 @@
+// Place all the styles related to the lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-list {
+  margin-bottom: 2rem;
+
+  h4 a {
+    color: inherit;
+  }
+
+  img {
+    display: inline-block;
+    max-width: 90px;
+    border-radius: 5px;
+  }
+}
+
+.movie-list-item {
+  .checkbox {
+    float: left;
+
+    .custom-control-input, .custom-control-indicator {
+      width: 30px;
+      height: 30px;
+    }
+
+    .custom-control-indicator {
+      top: 0;
+    }
+  }
+
+  img {
+    float: left;
+    max-height: 125px;
+    border-radius: 5px;
+  }
+
+  .content {
+    overflow: hidden;
+  }
+}
+
+.movie-list-item.checked {
+  text-decoration: line-through;
+  color: #868e96;
+
+  img {
+    filter: grayscale(100%);
+  }
+
+  .custom-control-input:checked~.custom-control-indicator {
+    background-color: #868e96;
+  }
+}
