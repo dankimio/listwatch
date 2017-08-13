@@ -1,20 +1,20 @@
-<% rating = current_user.ratings.find_by(movie: movie) %>
+<% rating = current_user.ratings.find_by(movie: movie) if user_signed_in? %>
 
 <li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if rating %>">
   <div class="checkbox mr-2">
     <% if user_signed_in? && rating %>
-      <%= form_tag movie_rating_path(movie), method: :delete, remote: true,
-                   id: "movie_#{movie.id}", data: { 'movie-id' => movie.id } do |f| %>
+      <%= link_to movie_rating_path(movie), method: :delete,
+                  remote: true do %>
         <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" data-movie-id="<%= movie.id %>" checked>
+          <input type="checkbox" class="custom-control-input" checked>
           <span class="custom-control-indicator"></span>
         </label>
       <% end %>
     <% else %>
-      <%= form_tag movie_rating_path(movie), remote: true,
-                   id: "movie_#{movie.id}", data: { 'movie-id' => movie.id } do |f| %>
+      <%= link_to movie_rating_path(movie), method: :post,
+                  remote: true do %>
         <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" data-movie-id="<%= movie.id %>">
+          <input type="checkbox" class="custom-control-input">
           <span class="custom-control-indicator"></span>
         </label>
       <% end %>
