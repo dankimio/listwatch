@@ -1,0 +1,34 @@
+<li class="movie-list-item mb-4">
+  <div class="checkbox mr-2">
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+    </label>
+  </div>
+  <%= image_tag movie.small_poster_url, class: 'mr-3' %>
+  <div class="content">
+    <h3>
+      <span class="text-muted">
+        <span class="position">1.</span>
+      </span>
+      <%= movie.title %>
+      <small class="text-muted">
+        <%= movie.release_date&.year %>
+      </small>
+    </h3>
+    <p class="mb-2">
+      <%= movie.description&.truncate(250) %>
+    </p>
+    <ul class="extra-info list-inline">
+      <li class="list-inline-item text-secondary mr-3">
+        <span class="oi oi-star mr-1"></span>
+        <%= movie.tmdb_rating %>
+      </li>
+      <!-- <li class="list-inline-item text-secondary mr-3">
+        <span class="oi oi-heart mr-1"></span>
+        76 %
+      </li> -->
+    </ul>
+  </div>
+  <div class="clearfix"></div>
+</li>
