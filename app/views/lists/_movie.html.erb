@@ -1,6 +1,6 @@
-<li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if movie.rating_id.present? %>">
+<li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if movie.rating? %>">
   <div class="checkbox mr-2">
-    <%= render 'rating', movie: movie, rating: movie.rating_id.present? %>
+    <%= render 'rating', movie: movie, rating: movie.rating? %>
   </div>
   <%= image_tag movie.small_poster_url, class: 'mr-3' %>
   <div class="content">

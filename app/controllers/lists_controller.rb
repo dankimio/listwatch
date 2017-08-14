@@ -1,7 +1,6 @@
 class ListsController < ApplicationController
   def show
     @movies = Movie
-      .joins('LEFT JOIN ratings ON ratings.movie_id = movies.id')
-      .select('movies.*, ratings.id AS rating_id')
+      .select('movies.*, EXISTS(SELECT 1 FROM ratings WHERE movie_id = movies.id) AS rating')
   end
 end
