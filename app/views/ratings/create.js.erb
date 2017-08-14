@@ -1,4 +1,7 @@
 var movie = $('#movie-<%= @movie.id %>');
-movie.replaceWith("<%= j render('lists/movie', movie: @movie) %>");
+movie.addClass('checked');
+
+var checkbox = movie.find('.checkbox');
+checkbox.html("<%= j render('lists/rating', movie: @movie, rating: true) %>");
 
 addPositionToMovies();

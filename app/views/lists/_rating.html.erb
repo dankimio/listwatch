@@ -1,0 +1,17 @@
+<% if rating %>
+  <%= link_to movie_rating_path(movie), method: :delete,
+              remote: true do %>
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" checked>
+      <span class="custom-control-indicator"></span>
+    </label>
+  <% end %>
+<% else %>
+  <%= link_to movie_rating_path(movie), method: :post,
+              remote: true do %>
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+    </label>
+  <% end %>
+<% end %>

@@ -1,24 +1,6 @@
-<% rating = current_user.ratings.find_by(movie: movie) if user_signed_in? %>
-
-<li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if rating %>">
+<li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if movie.rating_id.present? %>">
   <div class="checkbox mr-2">
-    <% if user_signed_in? && rating %>
-      <%= link_to movie_rating_path(movie), method: :delete,
-                  remote: true do %>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" checked>
-          <span class="custom-control-indicator"></span>
-        </label>
-      <% end %>
-    <% else %>
-      <%= link_to movie_rating_path(movie), method: :post,
-                  remote: true do %>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      <% end %>
-    <% end %>
+    <%= render 'rating', movie: movie, rating: movie.rating_id.present? %>
   </div>
   <%= image_tag movie.small_poster_url, class: 'mr-3' %>
   <div class="content">

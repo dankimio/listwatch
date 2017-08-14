@@ -19,7 +19,7 @@
       <h1>IMDb Top 250</h1>
       <p class="text-muted mb-4">Top 250 as rated by IMDb Users</p>
       <ul id="movie-list" class="list-unstyled">
-        <% @movies.reverse.each_with_index do |movie| %>
+        <% @movies.each do |movie| %>
           <%= render 'movie', movie: movie %>
         <% end %>
       </ul>
