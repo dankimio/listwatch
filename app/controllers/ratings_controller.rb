@@ -1,5 +1,6 @@
 class RatingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_list
   before_action :set_movie
 
   def create
@@ -11,6 +12,10 @@ class RatingsController < ApplicationController
   end
 
   private
+
+  def set_list
+    @list = List.find_by(id: params[:list_id])
+  end
 
   def set_movie
     @movie = Movie.find(params[:movie_id])

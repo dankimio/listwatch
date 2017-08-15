@@ -1,5 +1,5 @@
 <% if rating %>
-  <%= link_to movie_rating_path(movie), method: :delete,
+  <%= link_to movie_rating_path(movie, list_id: @list.id), method: :delete,
               remote: true do %>
     <label class="custom-control custom-checkbox">
       <input type="checkbox" class="custom-control-input" checked>
@@ -7,7 +7,7 @@
     </label>
   <% end %>
 <% else %>
-  <%= link_to movie_rating_path(movie), method: :post,
+  <%= link_to movie_rating_path(movie, list_id: @list.id), method: :post,
               remote: true do %>
     <label class="custom-control custom-checkbox">
       <input type="checkbox" class="custom-control-input">

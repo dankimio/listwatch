@@ -8,6 +8,6 @@ class List < ApplicationRecord
   end
 
   def rated_movies_count(user)
-    (movie_ids & user.movie_ids).count
+    @rated_movies_count ||= (movie_ids & user.movie_ids).count
   end
 end
