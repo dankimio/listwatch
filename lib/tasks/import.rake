@@ -12,8 +12,6 @@ namespace :listwatch do
   def process_csv(filename)
     # Use filename as a name for the list: "Oscars.csv" => "Oscars"
     list_name = filename.split('.').first
-    next if List.find_by(name: list_name)
-
     list = List.create(name: list_name)
 
     path = Rails.root.join('lib', 'data', filename)
@@ -28,7 +26,7 @@ namespace :listwatch do
       search.year(year)
       results = search.fetch
 
-      if results.any?
+      if results.present?
         movie = Movie.find_or_import_from_tmdb(results.first['id'])
         list.positions.create(movie: movie, value: year)
         Rails.logger.info "Successfully imported #{title} (#{year})"
@@ -38,7 +36,7 @@ namespace :listwatch do
       search.primary_release_year(year)
       results = search.fetch
 
-      if results.any?
+      if results.present?
         movie = Movie.find_or_import_from_tmdb(results.first['id'])
         list.positions.create(movie: movie, value: year)
         Rails.logger.info "Successfully imported #{title} (#{year})"
