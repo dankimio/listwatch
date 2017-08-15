@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170815135627) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name", null: false
+    t.text "description"
     t.integer "movies_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
