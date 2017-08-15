@@ -23,12 +23,22 @@
         </li>
       </ul>
       <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item">
-          <a class="nav-link mr-2" href="#">Sign in</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="btn btn-outline-primary my-2 my-sm-0">Sign up</a>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Sign out',
+                        destroy_user_session_path, method: :delete,
+                        class: 'btn btn-outline-primary my-2 my-sm-0' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link mr-2' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign up',
+                        new_user_registration_path,
+                        class: 'btn btn-outline-primary my-2 my-sm-0' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
