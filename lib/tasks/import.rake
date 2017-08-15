@@ -18,7 +18,7 @@ namespace :listwatch do
 
     path = Rails.root.join('lib', 'data', filename)
     CSV.foreach(path, headers: true) do |row|
-      sleep(0.5)
+      sleep(0.25)
 
       title = row['Nominee']
       year = row['Year'].to_i
