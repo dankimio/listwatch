@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'lists#show'
+  root 'lists#index'
 
   resources :lists
   resources :movies do

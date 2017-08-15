@@ -1,40 +1,9 @@
 <section class="mt-4">
   <div class="row">
-    <div class="col-md-6">
-      <div class="card card-list">
-        <div class="card-body">
-          <h4 class="card-title"><a href="/list.html">IMDb Top 250</a></h4>
-          <h6 class="card-subtitle mb-3 text-muted">Top 250 as rated by IMDb Users</h6>
-          <p class="card-text">
-            <img src="http://image.tmdb.org/t/p/w185/kFWLxUwcSpiLzszZbxUIZT9g6WR.jpg" alt="">
-            <img src="http://image.tmdb.org/t/p/w185/cUqEgoP6kj8ykfNjJx3Tl5zHCcN.jpg" alt="">
-            <img src="http://image.tmdb.org/t/p/w185/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="">
-          </p>
-          <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-              81 / 126
-            </div>
-          </div>
-        </div>
+    <% @lists.each do |list| %>
+      <div class="col-md-6">
+        <%= render 'list', list: list %>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card card-list">
-        <div class="card-body">
-          <h4 class="card-title"><a href="/list.html">Oscar winners</a></h4>
-          <h6 class="card-subtitle mb-3 text-muted">Oscar winners from 1927 to present</h6>
-          <p class="card-text">
-            <img src="http://image.tmdb.org/t/p/w185/kFWLxUwcSpiLzszZbxUIZT9g6WR.jpg" alt="">
-            <img src="http://image.tmdb.org/t/p/w185/cUqEgoP6kj8ykfNjJx3Tl5zHCcN.jpg" alt="">
-            <img src="http://image.tmdb.org/t/p/w185/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="">
-          </p>
-          <div class="progress">
-            <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-              81 / 126
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </section>

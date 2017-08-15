@@ -1,0 +1,16 @@
+<div class="card card-list">
+  <div class="card-body">
+    <h4 class="card-title">
+      <%= link_to list.name, list %>
+    </h4>
+    <h6 class="card-subtitle mb-3 text-muted">
+      <%= list.description&.truncate(100) %>
+    </h6>
+    <p class="card-text">
+      <img src="http://image.tmdb.org/t/p/w185/kFWLxUwcSpiLzszZbxUIZT9g6WR.jpg" alt="">
+      <img src="http://image.tmdb.org/t/p/w185/cUqEgoP6kj8ykfNjJx3Tl5zHCcN.jpg" alt="">
+      <img src="http://image.tmdb.org/t/p/w185/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="">
+    </p>
+    <%= render 'progress', list: list %>
+  </div>
+</div>

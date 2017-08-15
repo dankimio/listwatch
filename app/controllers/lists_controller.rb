@@ -1,6 +1,10 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show]
 
+  def index
+    @lists = List.all
+  end
+
   def show
     @movies = @list.movies
       .select('movies.*, EXISTS(SELECT 1 FROM ratings WHERE movie_id = movies.id) AS rating')

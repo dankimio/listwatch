@@ -7,5 +7,5 @@ checkbox.html("<%= j render('lists/rating', movie: @movie, rating: true) %>");
 addPositionToMovies();
 
 // Update progress bar
-var progress = $('#progress');
-progress.html("<%= j render('lists/progress') %>");
+var progress = $('.progress');
+progress.replaceWith("<%= j render('lists/progress', list: @list) %>");
