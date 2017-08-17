@@ -1,4 +1,4 @@
-<div class="card card-list">
+<div class="card card-list mb-4">
   <div class="card-body">
     <h4 class="card-title">
       <%= link_to list.name, list %>
@@ -10,7 +10,7 @@
       <div class="row small-gutters">
         <% list.posters_cache.first(4).each do |poster_url| %>
           <div class="col-3">
-            <%= image_tag small_poster_url(poster_url), class: 'img-fluid' %>
+            <%= image_tag small_poster_url(poster_url), class: 'rounded img-fluid' %>
           </div>
         <% end %>
       </div>

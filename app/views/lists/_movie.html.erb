@@ -1,9 +1,9 @@
 <% cache [movie, movie.rating?] do %>
   <li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if movie.rating? %>">
-    <div class="checkbox mr-2">
+    <div class="checkbox mr-2 float-left">
       <%= render 'rating', movie: movie, rating: movie.rating? %>
     </div>
-    <%= image_tag movie.small_poster_url, class: 'mr-3' %>
+    <%= image_tag movie.small_poster_url, class: 'mr-3 float-left rounded' %>
     <div class="content">
       <h3>
         <span class="text-muted">

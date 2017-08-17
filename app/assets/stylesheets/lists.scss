@@ -3,14 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .card-list {
-  margin-bottom: 2rem;
-
   h4 a {
     color: inherit;
-  }
-
-  img {
-    border-radius: 5px;
   }
 
   .small-gutters {
@@ -26,8 +20,6 @@
 
 .movie-list-item {
   .checkbox {
-    float: left;
-
     .custom-control-input, .custom-control-indicator {
       width: 30px;
       height: 30px;
@@ -39,9 +31,7 @@
   }
 
   img {
-    float: left;
     max-height: 125px;
-    border-radius: 5px;
   }
 
   .content {
