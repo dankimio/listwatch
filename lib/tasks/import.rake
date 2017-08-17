@@ -4,6 +4,7 @@ namespace :listwatch do
 
     Dir.foreach(directory) do |filename|
       next if filename == '.' || filename == '..'
+      next if filename.last(3) != 'csv'
 
       process_csv(filename)
     end
@@ -16,7 +17,7 @@ namespace :listwatch do
 
     path = Rails.root.join('lib', 'data', filename)
     CSV.foreach(path, headers: true) do |row|
-      sleep(0.25)
+      sleep(0.5)
 
       title = row['Nominee']
       year = row['Year'].to_i
@@ -34,6 +35,27 @@ namespace :listwatch do
       end
 
       search.primary_release_year(year)
+      results = search.fetch
+
+      if results.present?
+        movie = Movie.find_or_import_from_tmdb(results.first['id'])
+        list.positions.create(movie: movie, value: year)
+        Rails.logger.info "Successfully imported #{title} (#{year})"
+        next
+      end
+
+      search.primary_release_year(nil)
+      search.year(year + 1)
+      results = search.fetch
+
+      if results.present?
+        movie = Movie.find_or_import_from_tmdb(results.first['id'])
+        list.positions.create(movie: movie, value: year)
+        Rails.logger.info "Successfully imported #{title} (#{year})"
+        next
+      end
+
+      search.year(year - 1)
       results = search.fetch
 
       if results.present?
