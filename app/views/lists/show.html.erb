@@ -15,9 +15,7 @@
       <h1><%= @list.name %></h1>
       <p class="text-muted mb-5"><%= @list.description %></p>
       <ul id="movie-list" class="list-unstyled">
-        <% @movies.each do |movie| %>
-          <%= render 'movie', movie: movie %>
-        <% end %>
+        <%= render partial: 'movie', collection: @movies, cache: true %>
       </ul>
     </div>
   </div>
