@@ -1,7 +1,7 @@
 class RatingsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_list
   before_action :set_movie
+  before_action :authenticate_user!
 
   def create
     @rating = current_user.ratings.find_or_create_by(movie: @movie)
@@ -12,6 +12,12 @@ class RatingsController < ApplicationController
   end
 
   private
+
+  # Override Devise implementation for remote requests
+  def authenticate_user!
+    session[:user_return_to] = list_url(@list)
+    redirect_to new_user_session_path, format: 'js'
+  end
 
   def set_list
     @list = List.find_by(id: params[:list_id])
