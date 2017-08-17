@@ -3,6 +3,8 @@ class Movie < ApplicationRecord
   has_many :positions, dependent: :destroy
   has_many :lists, through: :positions
 
+  scope :with_poster, -> { where.not(tmdb_poster_path: nil) }
+
   def self.find_or_import_from_tmdb(tmdb_id)
     movie = find_by(tmdb_id: tmdb_id)
     return movie if movie

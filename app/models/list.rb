@@ -1,4 +1,6 @@
 class List < ApplicationRecord
+  POSTERS_CACHE_SIZE = 5
+
   has_many :positions, dependent: :destroy
   has_many :movies, through: :positions
 
@@ -9,5 +11,14 @@ class List < ApplicationRecord
 
   def rated_movies_count(user)
     @rated_movies_count ||= (movie_ids & user.movie_ids).count
+  end
+
+  def update_posters_cache
+    posters = movies.with_poster
+      .order('positions.value')
+      .limit(POSTERS_CACHE_SIZE)
+      .pluck(:tmdb_poster_path)
+
+    update_attribute(:posters_cache, posters)
   end
 end

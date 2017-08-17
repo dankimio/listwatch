@@ -67,5 +67,7 @@ namespace :listwatch do
 
       puts "Couldn't find movie #{title} (#{year})"
     end
+
+    list.update_posters_cache
   end
 end
