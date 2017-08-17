@@ -1,11 +1,11 @@
 <div class="progress">
   <% if user_signed_in? && list.rated_movies_count(current_user).positive? %>
     <div class="progress-bar bg-success" role="progressbar" style="width: <%= list.progress(current_user) * 100 %>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-      <%= list.rated_movies_count(current_user) %> / <%= list.movies_count %>
+      <span><%= list.rated_movies_count(current_user) %> / <%= list.movies_count %></span>
     </div>
   <% else %>
     <div class="progress-bar bg-transparent" role="progressbar" style="width: 100%;color:#aaa" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-      0 / <%= list.movies_count %>
+      <span>0 / <%= list.movies_count %></span>
     </div>
   <% end %>
 </div>
