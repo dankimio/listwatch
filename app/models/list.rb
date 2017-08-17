@@ -15,10 +15,16 @@ class List < ApplicationRecord
 
   def update_posters_cache
     posters = movies.with_poster
-      .order('positions.value')
+      .order("positions.value #{movies_order}")
       .limit(POSTERS_CACHE_SIZE)
       .pluck(:tmdb_poster_path)
 
     update_attribute(:posters_cache, posters)
+  end
+
+  private
+
+  def movies_order
+    descending ? 'DESC' : 'ASC'
   end
 end
