@@ -7,9 +7,9 @@
       <%= list.description&.truncate(100) %>
     </h6>
     <p class="card-text">
-      <img src="http://image.tmdb.org/t/p/w185/kFWLxUwcSpiLzszZbxUIZT9g6WR.jpg" alt="">
-      <img src="http://image.tmdb.org/t/p/w185/cUqEgoP6kj8ykfNjJx3Tl5zHCcN.jpg" alt="">
-      <img src="http://image.tmdb.org/t/p/w185/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg" alt="">
+      <% list.posters_cache.each do |poster_url| %>
+        <%= image_tag small_poster_url(poster_url) %>
+      <% end %>
     </p>
     <%= render 'progress', list: list %>
   </div>
