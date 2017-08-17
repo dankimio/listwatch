@@ -15,6 +15,8 @@ class RatingsController < ApplicationController
 
   # Override Devise implementation for remote requests
   def authenticate_user!
+    return if user_signed_in?
+
     session[:user_return_to] = list_url(@list)
     redirect_to new_user_session_path, format: 'js'
   end
