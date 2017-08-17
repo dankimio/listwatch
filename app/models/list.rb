@@ -2,7 +2,7 @@ class List < ApplicationRecord
   POSTERS_CACHE_SIZE = 5
 
   has_many :positions, dependent: :destroy
-  has_many :movies, through: :positions
+  has_many :movies, -> (list) { order("positions.value #{list.movies_order}") }, through: :positions
 
   def progress(user)
     return 0 if movies_count == 0
@@ -15,14 +15,11 @@ class List < ApplicationRecord
 
   def update_posters_cache
     posters = movies.with_poster
-      .order("positions.value #{movies_order}")
       .limit(POSTERS_CACHE_SIZE)
       .pluck(:tmdb_poster_path)
 
     update_attribute(:posters_cache, posters)
   end
-
-  private
 
   def movies_order
     descending ? 'DESC' : 'ASC'
