@@ -7,9 +7,13 @@
       <%= list.description&.truncate(100) %>
     </h6>
     <p class="card-text">
-      <% list.posters_cache.each do |poster_url| %>
-        <%= image_tag small_poster_url(poster_url) %>
-      <% end %>
+      <div class="row small-gutters">
+        <% list.posters_cache.first(4).each do |poster_url| %>
+          <div class="col-3">
+            <%= image_tag small_poster_url(poster_url), class: 'img-fluid' %>
+          </div>
+        <% end %>
+      </div>
     </p>
     <%= render 'progress', list: list %>
   </div>
