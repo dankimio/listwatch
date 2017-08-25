@@ -13,15 +13,9 @@
     </div>
   <% else %>
     <div class="progress-bar bg-transparent" role="progressbar" style="width: 100%;color:#aaa" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-      <% if list.progress(current_user) < 0.33 %>
-        <span>
-      <% end %>
-
-      0 / <%= list.movies_count %>
-
-      <% if list.progress(current_user) < 0.33 %>
-        </span>
-      <% end %>
+      <span>
+        0 / <%= list.movies_count %>
+      </span>
     </div>
   <% end %>
 </div>
