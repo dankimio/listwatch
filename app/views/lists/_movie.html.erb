@@ -1,4 +1,4 @@
-<% cache [movie, movie.rating?] do %>
+<% cache [list, movie, movie.rating?] do %>
   <li id="movie-<%= movie.id %>" class="movie-list-item mb-4 <%= 'checked' if movie.rating? %>">
     <div class="checkbox mr-2 float-left">
       <%= render 'rating', movie: movie, rating: movie.rating? %>
