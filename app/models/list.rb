@@ -2,7 +2,9 @@ class List < ApplicationRecord
   POSTERS_CACHE_SIZE = 4
 
   has_many :positions, dependent: :destroy
-  has_many :movies, -> (list) { order("positions.value #{list.movies_order}") }, through: :positions
+  has_many :movies,
+           -> (list) { order("positions.featured DESC, positions.value #{list.movies_order}") },
+           through: :positions
 
   def progress(user)
     return 0 if movies_count == 0
