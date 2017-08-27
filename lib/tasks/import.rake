@@ -17,55 +17,14 @@ namespace :listwatch do
 
     path = Rails.root.join('lib', 'data', filename)
     CSV.foreach(path, headers: true) do |row|
-      sleep(0.5)
+      sleep(0.25)
 
-      title = row['Nominee']
-      year = row['Year'].to_i
+      title = row['title']
+      featured = (row['won'] == 'yes')
+      # year = row['year'].to_i
 
-      search = Tmdb::Search.new
-      search.query("#{title}")
-      search.year(year)
-      results = search.fetch
-
-      if results.present?
-        movie = Movie.find_or_import_from_tmdb(results.first['id'])
-        list.positions.create(movie: movie, value: year)
-        Rails.logger.info "Successfully imported #{title} (#{year})"
-        next
-      end
-
-      search.primary_release_year(year)
-      results = search.fetch
-
-      if results.present?
-        movie = Movie.find_or_import_from_tmdb(results.first['id'])
-        list.positions.create(movie: movie, value: year)
-        Rails.logger.info "Successfully imported #{title} (#{year})"
-        next
-      end
-
-      search.primary_release_year(nil)
-      search.year(year + 1)
-      results = search.fetch
-
-      if results.present?
-        movie = Movie.find_or_import_from_tmdb(results.first['id'])
-        list.positions.create(movie: movie, value: year)
-        Rails.logger.info "Successfully imported #{title} (#{year})"
-        next
-      end
-
-      search.year(year - 1)
-      results = search.fetch
-
-      if results.present?
-        movie = Movie.find_or_import_from_tmdb(results.first['id'])
-        list.positions.create(movie: movie, value: year)
-        Rails.logger.info "Successfully imported #{title} (#{year})"
-        next
-      end
-
-      puts "Couldn't find movie #{title} (#{year})"
+      movie = Movie.find_or_import_from_tmdb(row['id'])
+      list.positions.create(movie: movie, featured: featured)
     end
 
     list.update_posters_cache
