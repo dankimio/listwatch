@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// lists#index
+
+.card {
+  .card-title {
+    font-size: 1.25em;
+    font-weight: normal;
+  }
+}
+
 .card-list {
   h4 a {
     color: inherit;
@@ -16,6 +25,12 @@
       padding-left: 5px;
     }
   }
+}
+
+// lists#show
+
+#list-name {
+  font-size: 2.25em;
 }
 
 .movie-list-item {
