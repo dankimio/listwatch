@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.3'
 
 # Views
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.0'
 
 # Utilities
 gem 'themoviedb', '~> 1.0'
