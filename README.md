@@ -1,3 +1,5 @@
 # README
 
-An attempt to make a web app with lists of films.
+A Rails app to keep track of lists of films.
+
+![Screenshot](./screenshot.png)
