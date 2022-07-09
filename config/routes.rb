@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :lists
   resources :movies do
-    resource :rating, only: [:create, :destroy]
+    resource :rating, only: %i[create destroy]
   end
 
   devise_for :users

@@ -10,7 +10,7 @@ class ListsController < ApplicationController
                 @list.movies
                   .select("movies.*, EXISTS(SELECT 1 FROM ratings WHERE movie_id = movies.id AND ratings.user_id = #{current_user.id}) AS rating")
               else
-                @list.movies.select("movies.*, FALSE AS rating")
+                @list.movies.select('movies.*, FALSE AS rating')
               end
   end
 

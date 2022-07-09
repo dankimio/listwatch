@@ -3,12 +3,13 @@ class List < ApplicationRecord
 
   has_many :positions, dependent: :destroy
   has_many :movies,
-           -> (list) { order("positions.featured DESC, positions.value #{list.movies_order}") },
+           ->(list) { order("positions.featured DESC, positions.value #{list.movies_order}") },
            through: :positions
 
   def progress(user)
-    return 0 if movies_count == 0
-    rated_movies_count(user).to_f / movies_count.to_f
+    return 0 if movies_count.zero?
+
+    rated_movies_count(user).to_f / movies_count
   end
 
   def rated_movies_count(user)

@@ -34,11 +34,13 @@ class MovieImporter
     trailers_info = Tmdb::Movie.trailers(@movie.tmdb_id)
     youtube_trailer = trailers_info['youtube']&.first
     return unless youtube_trailer
+
     @movie.trailer_youtube_id = youtube_trailer['source']
   end
 
   def parse_director(credits)
     return unless credits && credits['crew']
+
     credits['crew'].select { |m| m['job'] == 'Director' }.map { |m| m['name'] }.join(', ')
   end
 end
